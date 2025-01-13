@@ -6,7 +6,6 @@ package oscommands
 import (
 	"os"
 	"runtime"
-	"strings"
 )
 
 func GetPlatform() *Platform {
@@ -14,13 +13,7 @@ func GetPlatform() *Platform {
 
 	interactiveShell := shell
 	interactiveShellArg := "-i"
-	interactiveShellExit := "; exit $?"
-
-	if !(strings.HasSuffix(shell, "bash") || strings.HasSuffix(shell, "zsh")) {
-		interactiveShell = "bash"
-		interactiveShellArg = ""
-		interactiveShellExit = ""
-	}
+	interactiveShellExit := "; exit"
 
 	return &Platform{
 		OS:                   runtime.GOOS,
